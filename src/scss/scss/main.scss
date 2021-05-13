@@ -1,0 +1,16 @@
+// Custom.scss
+// Option B: Include parts of Bootstrap
+
+// Override theme colors
+$theme-colors: (
+  "primary": #649CD4,
+  "secondary": #205459,
+  "success": #46591D,
+  "warning": #F28F38,
+  "danger": #F25757,
+  "info": #F2E7C4,
+  "dark": #2D2D2D
+);
+
+// Bootstrap and its default variables
+@import "../bootstrap/scss/bootstrap";

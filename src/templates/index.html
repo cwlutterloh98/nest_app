@@ -1,0 +1,66 @@
+{% extends 'template.html' %}
+{% block title %} Welcome to Miami Valley Audobon Society {% endblock %}
+{% block content %}
+<div class="container-fluid" style="background:url({{ url_for('static', filename= 'img/cool_bird.jpg') }}); background-size:cover">
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-sm-6">
+                <h1 class="text-white text-center mt-5">Nest Observation</h1>
+                <a class="nav-link btn btn-danger text-white px-4 m-3 mb-5" href="{{ url_for('nest_data.addObservation') }}">
+                    Add Observation
+                </a>
+            </div> 
+        </div>
+    </div>
+</div>
+<main class="container my-5">
+    <h1 class="text-center mb-5 text-secondary">HUESTON WOODS STATE PARK</h1>
+    <p class="text-center">In the spring of 2017, volunteers constructed and installed 38 bluebird nesting boxes at Hueston Woods State Park Golf Course in Oxford, Ohio. Since then, volunteers have checked the houses on a weekly basis and recorded the activities in each house, such as number of eggs, dates of hatching, indications of predation, and when nestlings fledged. The plan is for this project to last for 10 years. </p>
+    <div class="row justify-content-evenly">
+        <div class="col-sm-4">
+            <a class="nav-link btn btn-warning text-white px-4 mx-3" href="{{ url_for('dashboards.dashboard') }}">
+                View Data
+            </a>
+        </div>
+        <div class="col-sm-4">
+            <a class="nav-link btn btn-danger text-white px-4 mx-3" href="{{ url_for('nest_data.addObservation') }}">
+                Add Observation
+            </a>
+        </div>
+    </div>
+    <div class="text-center">
+        <h1 class="text-center my-5 text-secondary">DATA WE COLLECT</h1>
+        <p>Bird House Number-- (Check Bird House Number)</p>
+        <p>Date of Observation-------------------------- Date</p>
+        <p>Number of Eggs Present------------ Total Number</p>
+        <p>Number of Live Young-------------- Total Number</p>
+        <p>Number of Dead Young------------- Total Number</p>
+        <p>Notes-------------------------------- Total Number</p>
+        <p class="text-danger">Active Species-- (Special Brown-headed cow bird)</p>
+    </div>
+    <h2 class="text-center text-secondary">Birds</h2>
+    <div class="row">
+        <div class="col-6">
+            <img src="{{ url_for('static', filename= 'img/birds/swallow.jpg') }}" class="img-fluid" height="50" alt="Tree Swallow" />
+            <p class="text-center mt-3">Tree Swallow</p>
+        </div>
+        <div class="col-6">
+            <img src="{{ url_for('static', filename= 'img/birds/eastern-blue-bird.jpg') }}" class="img-fluid" height="50" alt="Eastern Blue Bird" />
+            <p class="text-center mt-3">Eastern Blue Bird</p>
+        </div>
+        <div class="col-6">
+            <img src="{{ url_for('static', filename= 'img/birds/house-wren.jpg') }}" class="img-fluid" height="50" alt="House Wren" />
+            <p class="text-center mt-3">House Wren</p>
+        </div>
+        <div class="col-6">
+            <img src="{{ url_for('static', filename= 'img/birds/cow-bird.jpg') }}" class="img-fluid" height="50" alt="Cow Bird" />
+            <p class="text-center text-warning mt-3"><i class="fas fa-exclamation-triangle"></i>Brown Cow Bird</p>
+        </div>
+    </div>
+    <h1 class="text-center my-5 text-secondary">MAP OF STATE PARK</h1>
+    <div class="ratio ratio-16x9">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49220.726780719684!2d-84.78397129952577!3d39.55294582342487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x884017c0328096c1%3A0x19cd91a42811e661!2sHueston%20Woods%20State%20Park!5e0!3m2!1sen!2sus!4v1620677975759!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</main>
+
+{% endblock %}

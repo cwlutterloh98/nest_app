@@ -1,0 +1,91 @@
+{% extends 'template.html' %}
+{% block title %} Welcome to Miami Valley Audobon Society {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename= 'css/datepicker.css') }}">
+{% endblock %}
+
+{% block content %}
+<main class="container my-5">
+    <h1 class="text-center text-secondary">Edit Observation</h1>
+    <form method="POST" action="{{url_for('nest_data.edit_observation_post', id=id)}}">
+        <div class="mb-3">
+            <label for="bird-box" class="form-label">Bird Box #</label>
+            <select class="form-select form-select-sm mb-3" name="bird-box"id="bird-box">
+                {% for box in boxes %}
+                <option value="{{box[0]}}" {% if box[0] == nest %} selected {% endif %}>{{ box[1] }}</option>
+                {% endfor %}
+              </select>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="date" class="form-label">Observation Date</label>
+                <div class="input-group date mb-3" data-provide="datepicker">
+                    <input type="text" name="date" value={{date}} id="date" class="form-control">
+                    <span class="input-group-addon align-self-center">
+                        <i class="fas fa-calendar-alt fa-lg text-secondary"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="active-species" class="form-label">Active Species</label>
+                <select class="form-select form-select-sm mb-3" name="species"id="active-species">
+                    {% for species in species %}    
+                    <option value="{{ species[0] }}" {% if species[0] == species_name %} selected {% endif %}>{{ species[1] }}</option>
+                    {% endfor %}
+                    <option value="other">Other</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="other-species" class="form-label">If other species please specify</label>
+            <input type="text" class="form-control" name="other-species" id="other-species">
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <label for="eggs-present"  class="form-label">Eggs Present</label>
+                <input type="text" value="{{ num_eggs }}" class="form-control" name="eggs_present" id="eggs-present">
+            </div>
+            <div class="col-sm-4">
+                <label for="live-young" class="form-label">Live Young</label>
+                <input type="text" value="{{ live_young }}"class="form-control" name="live_young"id="live-young">
+            </div>
+            <div class="col-sm-4">
+                <label for="dead-young" class="form-label">Dead Young</label>
+            <input type="text" value="{{ dead_young }}"class="form-control" name="dead_young"id="dead-young">
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <label for="comments" class="form-label">Comments</label>
+            <textarea class="form-control" id="comments" name="comments" rows="3"></textarea>
+        </div>
+
+        <div class="mb-3 form-check text-danger">
+          <input type="checkbox" class="form-check-input" name="nest_flagged" id="nest_flagged"  {% if nest_flagged == 1%}checked{% endif %}>
+          <label class="form-check-label" for="nest_flagged">
+              <i class="fas fa-flag"></i>
+              Flag damaged Nest
+            </label>
+        </div>
+
+        <div class="mb-3 form-check text-danger">
+            <input type="checkbox" class="form-check-input" name="cow_present" id="cow_present"  {% if cow_present == 1%}checked{% endif %}>
+            <label class="form-check-label" for="cow_present">
+                <i class="fas fa-flag"></i>
+                Flag Brown Headed Cow Bird Present
+            </label>
+          </div>
+        <input type="hidden" id="user_Id" name="user_id" value="{{ user_id }}">
+
+        <button type="submit" class="btn btn-secondary text-white">Submit</button>
+      </form>
+</main>
+{% endblock %}
+
+{% block script %}
+<!-- Date picker script-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous"></script>
+{% endblock %}

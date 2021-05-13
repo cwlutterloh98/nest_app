@@ -1,0 +1,52 @@
+{% extends 'template.html' %}
+{% block title %} Welcome to Miami Valley Audobon Society {% endblock %}
+{% block content %}
+<main class="container my-5">
+    <h1 class="text-center mb-5 text-secondary">HELP</h1>
+    <div class="text-center">
+        <p>Collect data on bird houses. See below for what data to collect.</p>
+        <p>Click Add Observation.</p>
+        <p>You will be prompted to sign in with your username and password.</p>
+        <p>Fill out all forms and click submit.</p>
+        <p>You may edit observations later.</p>
+        <button type="submit" class="btn btn-danger text-white px-4 mx-3">
+            <a class="nav-link  text-white " href="{{ url_for('nest_data.addObservation') }}">
+                Add Observation
+            </a>
+        </button>
+    </div>
+ 
+
+  
+
+    <div class="text-center">
+        <h1 class="text-center my-5 text-secondary">DATA WE COLLECT</h1>
+        <p>Bird House Number------------------------------------ (Check Bird House Number)</p>
+        <p>Date of Observation------------------------------------------------------------- Date</p>
+        <p>Number of Eggs Present----------------------------------------------- Total Number</p>
+        <p>Number of Live Young------------------------------------------------- Total Number</p>
+        <p>Number of Dead Young------------------------------------------------ Total Number</p>
+        <p>Notes------------------------------------------------------------------- Total Number</p>
+        <p class="text-danger">Active Species------------------------------------- (Special Brown-headed cow bird)</p>
+    </div>
+    <h2 class="text-center text-secondary">Birds</h2>
+    <div class="row">
+        <div class="col-6">
+            <img src="{{ url_for('static', filename= 'img/birds/swallow.jpg') }}" class="img-fluid" height="50" alt="Tree Swallow" />
+            <p class="text-center mt-3">Tree Swallow</p>
+        </div>
+        <div class="col-6">
+            <img src="{{ url_for('static', filename= 'img/birds/eastern-blue-bird.jpg') }}" class="img-fluid" height="50" alt="Eastern Blue Bird" />
+            <p class="text-center mt-3">Eastern Blue Bird</p>
+        </div>
+        <div class="col-6">
+            <img src="{{ url_for('static', filename= 'img/birds/house-wren.jpg') }}" class="img-fluid" height="50" alt="House Wren" />
+            <p class="text-center mt-3">House Wren</p>
+        </div>
+        <div class="col-6">
+            <img src="{{ url_for('static', filename= 'img/birds/cow-bird.jpg') }}" class="img-fluid" height="50" alt="Cow Bird" />
+            <p class="text-center text-warning mt-3"><i class="fas fa-exclamation-triangle"></i>Brown Cow Bird</p>
+        </div>
+    </div>
+</main>
+{% endblock %}

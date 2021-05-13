@@ -1,0 +1,20 @@
+{% extends 'template.html' %}
+{% block title %} Welcome to Miami Valley Audobon Society {% endblock %}
+{% block content %}
+<main class="container my-5">
+        <h1 class="text-secondary text-center">Sign In</h1>
+        <form method="POST" action="/sign-in">
+                <label for="username" class="form-label my-3">Username</label>
+                <input type="text" class="form-control" name="username" id="username">
+                <label for="password" class="form-label my-3">Password</label>
+                <input type="password" class="form-control" name="password" id="password">
+                <div class="my-3 form-check text-danger">
+                        <input type="checkbox" class="form-check-input" name="remember" id="remember">
+                        <label class="form-check-label" for="remember">
+                                Remember Me
+                        </label>
+                </div>
+                <button type="submit" class="btn btn-secondary text-white my-3">Submit</button>
+        </form>
+</main>
+{% endblock %}
